@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Weapon weapon;
+    [SerializeField]
+    private GameObject projectile;
+    [SerializeField]
+    private float attackRate;
+
+
     private bool isMove;
 
     public bool MOVEINPUT
@@ -11,10 +18,28 @@ public class PlayerController : MonoBehaviour
         set
         {
             isMove = value;
+            weapon.FIRING = value;  // 무기 작동상태 변경. 
+
         }
     }
 
     private Vector3 pos;
+
+
+    private void Awake()
+    {
+        InitController();
+    }
+
+    private void InitController()
+    {
+        isMove = false;
+        if (!TryGetComponent<Weapon>(out weapon))
+            Debug.Log("PlayerController.cs - InitController() - weapon 참조 실패");
+        else
+            weapon.InitWeapon(projectile, attackRate);  // 무기 활성. 
+    }
+
 
     private void Update()
     {
