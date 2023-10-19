@@ -7,7 +7,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField]
     private GameObject poolObj; // 해당 Pool에서 관리해줄 대상 오브젝트
     [SerializeField]
-    private int allocateCount; //초기에 오브젝트를 생성할때 몇개씩 생성해낼지. 
+    private int allocateCount; // 오브젝트를 몇 개나 생성할지 정하는 변수
 
     private Stack<ObjectPool_Label> poolStack = new Stack<ObjectPool_Label>();
     private int objMaxCount; // 현재 풀에서 관리하고 있는 오브젝트의 총합. 
@@ -50,7 +50,7 @@ public class ObjectPool : MonoBehaviour
     }
 
 
-    // 풀에 오브젝트를 반환받는 로직. 
+    // 풀에 오브젝트를 반환
     public void PushObj(ObjectPool_Label label)
     {
         if (label.gameObject.activeSelf)

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    private bool isInit = false;        // 무기 사용하기 위한 세팅이 끝났는지. 
-    private GameObject projectilePrefab;  // 프로젝타일을 어떤 프리펩을 이용하여 생성할지.
-    private float attackRate;   // 공격과 공격 사이에 시간. 
+    private bool isInit = false;        // 무기 사용하기 위한 세팅
+    private GameObject projectilePrefab;  // 프리펩을 선택할 프로젝타일
+    private float attackRate;   // 공격 간격
 
     public void InitWeapon(GameObject projectile, float rate)
     {
@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
         attackRate = rate;
     }
 
-    private bool isFireing; // true 프로젝타일 발사중,   false 발사하지 않는 상태. 
+    private bool isFireing; // true 발사중 / false 발사 중지
 
     public bool FIRING
     {
@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
         {
             isFireing = value;
 
-            if (isInit) // 초기화가 된 무기들만 작동하도록. 
+            if (isInit) // 무기가 초기화가 됐는지 확인
             {
                 if (isFireing)
                 {
@@ -52,8 +52,6 @@ public class Weapon : MonoBehaviour
             // 좋은코드 - 오브젝트 풀을 이용하여 오브젝트를 재활용하는 코드
             obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Projectile_01].PopObj();
             obj.transform.position = transform.position;
-
-
 
             yield return new WaitForSeconds(attackRate); // 공격 딜레이. 
         }

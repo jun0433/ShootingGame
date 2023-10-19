@@ -10,6 +10,7 @@ public class Movement2D : MonoBehaviour
     [SerializeField]
     private Vector3 moveDirection = Vector3.zero;
 
+    // 이동 방향
     public void InitMovement(Vector3 dir)
     {
         moveDirection = dir;
