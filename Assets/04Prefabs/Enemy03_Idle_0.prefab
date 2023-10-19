@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 8099598392924587997}
   - component: {fileID: 1394515759112019242}
   - component: {fileID: 3000969089420948461}
+  - component: {fileID: 7489227235032528738}
   - component: {fileID: 4418785463168066655}
   - component: {fileID: -2928790567687008313}
   - component: {fileID: -3700686050429502892}
   m_Layer: 0
   m_Name: Enemy03_Idle_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +102,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 40
+--- !u!114 &7489227235032528738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811568626265698581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158959493eed97243812742256af4580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  moveDirection: {x: 0, y: -1, z: 0}
 --- !u!95 &4418785463168066655
 Animator:
   serializedVersion: 5

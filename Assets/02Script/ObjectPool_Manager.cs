@@ -16,7 +16,7 @@ enum ObjectType
     ObjT_Enemy_03,
 
     ObjT_Effect_01,
-
+    ObjT_DropItem_01,
 
 }
 
