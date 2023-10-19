@@ -9,9 +9,6 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         playerCont = GameObject.Find("Player").GetComponent<PlayerController>();
-
-        playerCont.MOVEINPUT = true;
-        playerCont.MOVEINPUT = false; 
     }
 
     private void OnMouseDown()
