@@ -14,6 +14,11 @@ public class ObjectPool_Label : MonoBehaviour
         gameObject.SetActive(false); // 비활성 상태로 관리. 
     }
 
+    public virtual void InitInfo()  // 가상 함수 : 상속받은 자식에서 재정의를 할수 있도록. 
+    {
+
+    }
+
     // 오브젝트 풀이 오브젝트를 꺼냄
     public virtual void Pop()
     {

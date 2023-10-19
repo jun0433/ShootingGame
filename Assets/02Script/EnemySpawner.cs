@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour
+{
+    [SerializeField]
+    private List<Transform> spawnTrans;
+    [SerializeField]
+    private float spawnDeltaTime;  // 스폰 시간. 
+
+    private int waveCounter; // 현재 웨이브를 나타내는 변수. 
+    private int spawnCounter; // 해당 웨이브에서 몇번의 스폰이 이루어 졌는지 카운트를 관리하는 변수 
+
+
+    private void Awake()
+    {
+        waveCounter = 0;
+        spawnCounter = 0;
+        Invoke("StartWave", 1f);
+    }
+
+
+    // 웨이브 시작 함수
+    public void StartWave()
+    {
+        spawnCounter = 0;
+        StartCoroutine("SpawnEvent");
+    }
+
+
+    private GameObject obj;
+
+    IEnumerator SpawnEvent() // 반복적으로 몬스터를 스폰. 
+    {
+        while (true)
+        {
+            spawnCounter++;
+            for (int i = 0; i < spawnTrans.Count; i++)
+            {
+                obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Enemy_01].PopObj();
+                obj.transform.position = spawnTrans[i].position;
+            }
+
+            if (spawnCounter >= 10)
+            {
+                Debug.Log("보스 스폰");
+            }
+
+            yield return YieldInstructionCache.WaitForSeconds(spawnDeltaTime);  // 스폰과 스폰 사이의 딜레이 부여. 
+        }
+    }
+
+}
