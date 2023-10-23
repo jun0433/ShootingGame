@@ -29,6 +29,12 @@ public class AlertLine : ObjectPool_Label
     // 五砺神 持失
     private void SpawnMeteo()
     {
+        spawnPos = transform.position;
+
+        spawnPos.y = 6.0f;
+
+        spawnObj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Meteorite].PopObj();
+        spawnObj.transform.position = spawnPos;
 
         Push();
     }

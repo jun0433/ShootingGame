@@ -4,20 +4,24 @@ using UnityEngine;
 
 enum ObjectType
 {
-    ObjT_Projectile_01,
-    ObjT_Projectile_02,
-    ObjT_Projectile_03,
-    ObjT_Projectile_04,
-    ObjT_Projectile_05,
-    ObjT_Projectile_06,
+    ObjT_Projectile_01, // 00
+    ObjT_Projectile_02, // 01
+    ObjT_Projectile_03, // 02
+    ObjT_Projectile_04, // 03
+    ObjT_Projectile_05, // 04
+    ObjT_Projectile_06, // 05
 
-    ObjT_Enemy_01,
-    ObjT_Enemy_02,
-    ObjT_Enemy_03,
+    ObjT_Enemy_01, // 06
+    ObjT_Enemy_02, // 07
+    ObjT_Enemy_03, // 08
 
-    ObjT_Effect_01,
-    ObjT_DropItem_01,
+    ObjT_Effect_01, // 09
+    ObjT_DropItem_01, // 10
 
+    ObjT_AlertLine, // 11
+    ObjT_Meteorite, // 12
+
+    ObjT_PlayerBoom, // 13
 }
 
 

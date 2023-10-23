@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Weapon weapon;
+
+    private PlayerChar playerChar;
+
     [SerializeField]
     private GameObject projectile;
     [SerializeField]
@@ -38,6 +41,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log("PlayerController.cs - InitController() - weapon 참조 실패");
         else
             weapon.InitWeapon(projectile, attackRate);  // 무기 활성. 
+
+        if(!TryGetComponent<PlayerChar>(out playerChar))
+        {
+            Debug.Log("PlayerController.cs - InitController() - playerChar 참조 실패");
+        }
+        else
+        {
+            playerChar.InitChar();
+        }
     }
 
 
@@ -51,6 +63,11 @@ public class PlayerController : MonoBehaviour
             pos.z = 0f;
 
             transform.position = pos;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            weapon.LunchBoom();
         }
     }
 

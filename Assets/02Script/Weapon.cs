@@ -57,4 +57,26 @@ public class Weapon : MonoBehaviour
         }
     }
 
+
+    [SerializeField]
+    private int boomCount;
+
+    public int BOOMCOUNT
+    {
+        get => boomCount;
+        set
+        {
+            boomCount = value;
+        }
+    }
+
+    public void LunchBoom()
+    {
+        if(isInit && BOOMCOUNT > 0)
+        {
+            obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_PlayerBoom].PopObj();
+            obj.transform.position = transform.position;
+            BOOMCOUNT--;
+        }
+    }
 }

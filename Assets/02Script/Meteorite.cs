@@ -29,9 +29,10 @@ public class Meteorite : ObjectPool_Label
     // 플레이어에게 데미지 부여하는 함수
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && collision.TryGetComponent<PlayerChar>(out PlayerChar player))
         {
             Debug.Log("플레이어와 충돌");
+            player.TakeDamage(2);
             Push();
         }
     }
