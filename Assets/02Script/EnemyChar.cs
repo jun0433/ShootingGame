@@ -14,7 +14,8 @@ public class EnemyChar : ObjectPool_Label
     private Movement2D movement;
     private GameObject obj;
     private SpriteRenderer sr;
-
+    
+   
 
     // 해당 오브젝트를 재활용하기 위해서 
     // 속성 값들을 초기화. == > 오브젝트 풀에서 꺼내질때. 
@@ -93,12 +94,31 @@ public class EnemyChar : ObjectPool_Label
         obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Effect_01].PopObj();
         obj.transform.position = transform.position;
 
+        GameManager.Inst.AddScore(5); // 몬스터 사망시 점수 추가
+
         DropItem();
     }
 
 
+    private int randCount;
+
     private void DropItem()
     {
+        randCount = Random.Range(0, 100);
+
+        if(randCount < 5)
+        {
+            // 파워 아이템 드랍
+        }
+        else if(randCount < 10)
+        {
+            // 회복 아이템 드랍
+        }
+        else if(randCount < 1)
+        {
+            // 폭탄 아이템 드랍
+        }
+
         for(int i = 0; i < 7; i++)
         {
             obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_DropItem_01].PopObj();

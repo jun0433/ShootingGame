@@ -17,6 +17,8 @@ public class PlayerChar : MonoBehaviour
     {
         set
         {
+            GameManager.Inst.ChangeHeart(curHP < value, value);
+
             curHP = value;
         }
         get => curHP;

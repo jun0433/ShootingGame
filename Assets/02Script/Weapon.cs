@@ -67,6 +67,7 @@ public class Weapon : MonoBehaviour
         set
         {
             boomCount = value;
+            GameManager.Inst.changeBoomText(boomCount);
         }
     }
 
