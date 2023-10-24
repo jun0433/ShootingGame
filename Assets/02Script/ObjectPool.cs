@@ -45,6 +45,7 @@ public class ObjectPool : MonoBehaviour
 
         obj = poolStack.Pop().gameObject;
         obj.SetActive(true);
+        obj.GetComponent<ObjectPool_Label>().Pop();
         objActiveCount++;
         return obj;
     }

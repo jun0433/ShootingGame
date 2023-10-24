@@ -22,7 +22,6 @@ public class Meteorite : ObjectPool_Label
         {
             col.isTrigger = true;
             col.radius = 0.25f;
-            Debug.Log("Meteorite.cs - Awake() - col 참조 실패");
         }
     }
 

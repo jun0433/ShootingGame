@@ -13,7 +13,7 @@ public class PlayerChar : MonoBehaviour
 
     private bool isAlive;
 
-    public int CuHP
+    public int CurHP
     {
         set
         {
@@ -27,7 +27,7 @@ public class PlayerChar : MonoBehaviour
     // PlayerController에서 초기화
     public void InitChar()
     {
-        curHP = maxHP;
+        CurHP = maxHP;
         isAlive = true;
     }
 
@@ -35,7 +35,7 @@ public class PlayerChar : MonoBehaviour
     {
         if (isAlive)
         {
-            curHP = CuHP - damage;
+            CurHP = curHP - damage;
             Debug.Log("플레이어 피격" + curHP);
             if(curHP <= 0)
             {
@@ -48,7 +48,7 @@ public class PlayerChar : MonoBehaviour
     {
         if(curHP < maxHP)
         {
-            CuHP++;
+            CurHP++;
         }
     }
 

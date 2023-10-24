@@ -22,14 +22,13 @@ public class ObjectPool_Label : MonoBehaviour
     // 오브젝트 풀이 오브젝트를 꺼냄
     public virtual void Pop()
     {
-        Debug.Log("Pop");
+        InitInfo();
     }
 
 
     // 오브젝트 풀에 반환
     public virtual void Push()
     {
-        Debug.Log("반환");
         pool.PushObj(this);
     }
 
