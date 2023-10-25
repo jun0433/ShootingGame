@@ -15,6 +15,20 @@ public class DestroyArea : MonoBehaviour
                 Destroy(collision.gameObject); // 해당 게임 오브젝트를 파괴. 
 
         }
+        else if (collision.CompareTag("Enemy"))
+        {
+            if (collision.TryGetComponent<ObjectPool_Label>(out ObjectPool_Label label))
+                label.Push();
+            else
+                Destroy(collision.gameObject); // 해당 게임 오브젝트를 파괴. 
+        }
+        else if (collision.CompareTag("Item"))
+        {
+            if (collision.TryGetComponent<ObjectPool_Label>(out ObjectPool_Label label))
+                label.Push();
+            else
+                Destroy(collision.gameObject); // 해당 게임 오브젝트를 파괴. 
+        }
     }
 
 

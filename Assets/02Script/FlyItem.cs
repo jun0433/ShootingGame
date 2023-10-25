@@ -62,6 +62,31 @@ public class FlyItem : ObjectPool_Label
         movement.InitMovement(dir.normalized); // 새로운 방향을 지정 (normalized를 하는 이유는 길이가 다른 vector가 생성되다 보면 버그가 생길 위험이 있기 때문에 최종 길이를 고정)
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            switch (type)
+            {
+                case Item_Type.IT_Power:
+                    break;
+                case Item_Type.IT_Heart:
+                    if(collision.TryGetComponent<PlayerChar>(out PlayerChar player))
+                    {
+                        player.TakeHealing();
+                    }
+                    break;
+                case Item_Type.IT_Boom:
+                    if(collision.TryGetComponent<Weapon>(out Weapon weapon))
+                    {
+                        weapon.BOOMCOUNT++;
+                    }
+                    break;
+            }
+            Push();
+        }
+    }
+
 
     // Heart를 습득하면 회복을 진행
 }

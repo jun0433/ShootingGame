@@ -56,6 +56,7 @@ public class PlayerChar : MonoBehaviour
 
     private void OnDie()
     {
+        GameManager.Inst.StageClear();
         Debug.Log("플레이어 사망");
     }
 }

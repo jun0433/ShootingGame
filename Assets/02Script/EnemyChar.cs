@@ -109,23 +109,31 @@ public class EnemyChar : ObjectPool_Label
         if(randCount < 5)
         {
             // 파워 아이템 드랍
+            obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_FlyItemPower].PopObj();
+            obj.transform.position = transform.position;
         }
         else if(randCount < 10)
         {
             // 회복 아이템 드랍
+            obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_FlyItemHeart].PopObj();
+            obj.transform.position = transform.position;
         }
-        else if(randCount < 1)
+        else if(randCount < 15)
         {
             // 폭탄 아이템 드랍
+            obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_FlyItemboom].PopObj();
+            obj.transform.position = transform.position;
+
         }
 
-        for(int i = 0; i < 7; i++)
+        for (int i = 0; i < 7; i++)
         {
             obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_DropItem_01].PopObj();
 
             obj.transform.position = transform.position;
             obj.transform.rotation = transform.rotation;
         }
+
 
     }
 }

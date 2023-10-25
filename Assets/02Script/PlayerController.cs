@@ -29,12 +29,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 pos;
 
 
-    private void Awake()
+    /*private void Awake()
     {
         InitController();
-    }
+    }*/
 
-    private void InitController()
+    public void InitController()
     {
         isMove = false;
         if (!TryGetComponent<Weapon>(out weapon))

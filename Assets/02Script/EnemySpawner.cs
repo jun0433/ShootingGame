@@ -13,7 +13,9 @@ public class EnemySpawner : MonoBehaviour
     private int spawnCounter; // 해당 웨이브에서 몇번의 스폰이 이루어 졌는지 카운트를 관리하는 변수 
 
 
-    private void Awake()
+
+    // Awake 대신 사용
+    public void InitSpawner()
     {
         waveCounter = 0;
         spawnCounter = 0;

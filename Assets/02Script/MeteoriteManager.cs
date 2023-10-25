@@ -11,7 +11,8 @@ public class MeteoriteManager : MonoBehaviour
     private GameObject obj;
     private Vector3 spawnPos;
 
-    private void Awake()
+
+    public void InitMeteorite()
     {
         StartCoroutine("SpawnAlertLine");
     }

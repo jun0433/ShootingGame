@@ -22,6 +22,10 @@ enum ObjectType
     ObjT_Meteorite, // 12
 
     ObjT_PlayerBoom, // 13
+
+    ObjT_FlyItemPower, // 14
+    ObjT_FlyItemHeart, // 15
+    ObjT_FlyItemboom, // 16
 }
 
 
