@@ -38,9 +38,10 @@ public class LoginManager : MonoBehaviour
         InitLoginScene();
     }
 
+
     private void InitLoginScene()
     {
-        if(PlayerPrefs.GetString(Save_Type.st_NickName.ToString()).Length > 2)
+        if(PlayerPrefs.GetString(Save_Type.st_NickName.ToString()).Length < 2)
         {// 세이브 데이터가 없음
             welcomeText.gameObject.SetActive(false);
             inputField.gameObject.SetActive(true);
@@ -48,7 +49,7 @@ public class LoginManager : MonoBehaviour
         }
         else
         {// 세이브 데이터가 있음
-            welcomeText.text = PlayerPrefs.GetString(Save_Type.st_NickName.ToString());
+            welcomeText.text = PlayerPrefs.GetString(Save_Type.st_NickName.ToString()) + "님 환영합니다.";
 
             welcomeText.gameObject.SetActive(true);
             haveUserInfo = true;
