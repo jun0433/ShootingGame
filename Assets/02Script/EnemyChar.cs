@@ -94,6 +94,8 @@ public class EnemyChar : ObjectPool_Label
         obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Effect_01].PopObj();
         obj.transform.position = transform.position;
 
+        SoundManager.Inst.PlaySFX(SFX_Type.SFX_Explosion_01);
+
         GameManager.Inst.AddScore(5); // 몬스터 사망시 점수 추가
 
         DropItem();

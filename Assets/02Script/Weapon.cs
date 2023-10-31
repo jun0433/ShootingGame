@@ -52,6 +52,9 @@ public class Weapon : MonoBehaviour
             // 좋은코드 - 오브젝트 풀을 이용하여 오브젝트를 재활용하는 코드
             obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Projectile_01].PopObj();
             obj.transform.position = transform.position;
+            obj.GetComponent<Movement2D>().InitMovement(Vector3.up);
+
+            SoundManager.Inst.PlaySFX(SFX_Type.SFX_Fire_01); // 공격 사운드 재생
 
             yield return new WaitForSeconds(attackRate); // 공격 딜레이. 
         }

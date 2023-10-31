@@ -40,6 +40,10 @@ public class LobbyManager : MonoBehaviour
         levelText.text = PlayerPrefs.GetInt(Save_Type.st_Level.ToString()).ToString();
         goldText.text = PlayerPrefs.GetInt(Save_Type.st_Gold.ToString()).ToString();
         expBar.fillAmount = PlayerPrefs.GetInt(Save_Type.st_Exp.ToString()) / 300f;
+
+        // 재접속을 했을 때 저장된 옵션 값을 참조해서 초기 세팅
+        SFX_ValueChange(PlayerPrefs.GetFloat(Save_Type.SFX_Param.ToString()));
+        BGM_ValueChange(PlayerPrefs.GetFloat(Save_Type.BGM_Param.ToString()));
     }
 
     private int activeMenu = 0;
@@ -87,5 +91,46 @@ public class LobbyManager : MonoBehaviour
     {
         PlayerPrefs.SetString(Save_Type.st_SceneName.ToString(), Scene.Battle.ToString()); // 다음씬 이름 저장
         SceneManager.LoadScene(Scene.Loading.ToString());
+    }
+
+    [SerializeField]
+    private TextMeshProUGUI sfx_Text;
+    [SerializeField]
+    private Slider sfx_Slider;
+
+    [SerializeField]
+    private TextMeshProUGUI bgm_Text;
+    [SerializeField]
+    private Slider bgm_Slider;
+
+    [SerializeField]
+    private AudioMixer audio_Master;
+
+    // dB를 저장할 변수
+    private float valueF;
+
+    public void SFX_ValueChange(float value)
+    {
+        Debug.Log("효과음 옵션 슬라이드 변화: " + value);
+        PlayerPrefs.SetFloat(Save_Type.SFX_Param.ToString(), value); // 세이브 파일 저장.
+        ChangeVolume(sfx_Text, sfx_Slider, Save_Type.SFX_Param, value);
+    }
+
+    public void BGM_ValueChange(float value)
+    {
+        Debug.Log("배경음 옵션 슬라이드 변화: " + value);
+        PlayerPrefs.SetFloat(Save_Type.BGM_Param.ToString(), value); // 세이브 파일 저장.
+        ChangeVolume(bgm_Text, bgm_Slider, Save_Type.BGM_Param, value);
+    }
+
+    // 볼륨 변화 함수(볼륨 text, slider, 저장 타입(볼륨 유지를 위해), 볼륨값)
+    private void ChangeVolume(TextMeshProUGUI text, Slider slider, Save_Type save_Type, float newVolume)
+    {
+        text.text = newVolume.ToString("N2");
+        slider.value = newVolume;
+        valueF = newVolume * 30f - 30f; // dB는 0이여도 정상적으로 들림
+        // BGM, SFX_Param
+        audio_Master.SetFloat(save_Type.ToString(), valueF);
+
     }
 }

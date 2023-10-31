@@ -8,8 +8,8 @@ public enum Save_Type
 {
     st_NickName,
     st_SceneName,
-    st_SFX,
-    st_BGM,
+    SFX_Param,
+    BGM_Param,
     st_Level,
     st_Exp,
     st_Gold,
@@ -84,8 +84,8 @@ public class LoginManager : MonoBehaviour
         PlayerPrefs.SetInt(Save_Type.st_Exp.ToString(), 0);
         PlayerPrefs.SetInt(Save_Type.st_Gold.ToString(), 5000);
 
-        PlayerPrefs.SetFloat(Save_Type.st_SFX.ToString(), 1.0f);
-        PlayerPrefs.SetFloat(Save_Type.st_BGM.ToString(), 1.0f);
+        PlayerPrefs.SetFloat(Save_Type.SFX_Param.ToString(), 1.0f);
+        PlayerPrefs.SetFloat(Save_Type.BGM_Param.ToString(), 1.0f);
     }
 
     public void InitUserData()
