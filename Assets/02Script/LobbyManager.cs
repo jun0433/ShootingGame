@@ -44,6 +44,22 @@ public class LobbyManager : MonoBehaviour
         // 재접속을 했을 때 저장된 옵션 값을 참조해서 초기 세팅
         SFX_ValueChange(PlayerPrefs.GetFloat(Save_Type.SFX_Param.ToString()));
         BGM_ValueChange(PlayerPrefs.GetFloat(Save_Type.BGM_Param.ToString()));
+
+
+        Skill_Type skill_Index;
+
+        for(int i = 0; i < skillBtnList.Count; i++)
+        {
+            skill_Index = (Skill_Type)i;
+            if(0 < PlayerPrefs.GetInt(skill_Index.ToString())) // 0번 배우지 않은 상태
+            {
+                skillBtnList[i].InitSkillButton(true, 7);
+            }
+            else
+            {
+                skillBtnList[i].InitSkillButton(false, 7);
+            }
+        }
     }
 
     private int activeMenu = 0;
@@ -133,4 +149,10 @@ public class LobbyManager : MonoBehaviour
         audio_Master.SetFloat(save_Type.ToString(), valueF);
 
     }
+
+
+    [SerializeField]
+    private List<SkillButton> skillBtnList; // 스킬 버튼을 관리하는 리스트
+
+
 }

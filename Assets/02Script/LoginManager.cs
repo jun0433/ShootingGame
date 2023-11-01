@@ -86,6 +86,13 @@ public class LoginManager : MonoBehaviour
 
         PlayerPrefs.SetFloat(Save_Type.SFX_Param.ToString(), 1.0f);
         PlayerPrefs.SetFloat(Save_Type.BGM_Param.ToString(), 1.0f);
+
+        PlayerPrefs.SetInt(Skill_Type.ST_Skill_01.ToString(), 0);
+        PlayerPrefs.SetInt(Skill_Type.ST_Skill_02.ToString(), 0);
+        PlayerPrefs.SetInt(Skill_Type.ST_Skill_03.ToString(), 0);
+        PlayerPrefs.SetInt(Skill_Type.ST_Skill_04.ToString(), 0);
+        PlayerPrefs.SetInt(Skill_Type.ST_Skill_05.ToString(), 0);
+        PlayerPrefs.SetInt(Skill_Type.ST_Skill_06.ToString(), 0);
     }
 
     public void InitUserData()
