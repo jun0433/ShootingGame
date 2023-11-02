@@ -89,16 +89,18 @@ public class EnemyChar : ObjectPool_Label
     public void OnDie()
     {
         isAlive = false;
-        Push(); // 오브젝트 풀에 반환
+        GameManager.Inst.AddScore(5); // 몬스터 사망시 점수 추가
+        GameManager.Inst.AddKillCount(false);
 
         obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Effect_01].PopObj();
         obj.transform.position = transform.position;
 
         SoundManager.Inst.PlaySFX(SFX_Type.SFX_Explosion_01);
 
-        GameManager.Inst.AddScore(5); // 몬스터 사망시 점수 추가
+
 
         DropItem();
+        Push(); // 오브젝트 풀에 반환
     }
 
 

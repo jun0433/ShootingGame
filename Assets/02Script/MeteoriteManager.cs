@@ -17,6 +17,11 @@ public class MeteoriteManager : MonoBehaviour
         StartCoroutine("SpawnAlertLine");
     }
 
+    public void StopMeteorite()
+    {
+        StopCoroutine("SpawnAlertLine");
+    }
+
     IEnumerator SpawnAlertLine()
     {
         while (true)

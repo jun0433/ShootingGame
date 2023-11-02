@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class StageClearManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class StageClearManager : MonoBehaviour
 
     private void LoadScene()
     {
+        GameManager.Inst.StageResult(); // 골드를 증가시키는 함수
         SceneManager.LoadScene("Lobby"); // "Lobby"씬 로드
     }
 
@@ -32,6 +34,10 @@ public class StageClearManager : MonoBehaviour
     private GameObject killCount;
     [SerializeField]
     private GameObject bossCount;
+    [SerializeField]
+    private TextMeshProUGUI killText;
+    [SerializeField]
+    private TextMeshProUGUI bossText;
 
     [SerializeField]
     private GameObject star01;
@@ -43,11 +49,18 @@ public class StageClearManager : MonoBehaviour
 
     private void Awake()
     {
-        SetStageClearPopup();
+        //SetStageClearPopup();
+    }
+
+    private void SetData()
+    {
+        killText.GetComponent<TextMeshProUGUI>().text = GameManager.Inst.CountN.ToString();
+        bossText.GetComponent<TextMeshProUGUI>().text = GameManager.Inst.CountB.ToString();
     }
 
     public void SetStageClearPopup()
     {
+        SetData();
         // LeanTween을 이용해서 scale을 조정(대상 오브젝트, 크기, 시간).setEase(LanTween 타입 지정).setDelay(딜레이 시간 지정).setOnComplete(끝나고 부를 함수)
         LeanTween.scale(title, new Vector3(1.5f, 1.5f, 1.5f), 2f).setEase(LeanTweenType.easeOutElastic).setDelay(0.5f).setOnComplete(LevelComplete);
 

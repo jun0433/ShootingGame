@@ -13,11 +13,18 @@ public class InputManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        playerCont.MOVEINPUT = true;
+        if(GameManager.Inst.CurState == GameState.GS_Play && playerCont != null)
+        {
+            playerCont.MOVEINPUT = true;
+        }
     }
 
     private void OnMouseUp()
     {
-        playerCont.MOVEINPUT = false;
+        if(playerCont != null)
+        {
+            playerCont.MOVEINPUT = false;
+        }
+
     }
 }

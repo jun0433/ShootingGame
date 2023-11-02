@@ -23,11 +23,18 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
+
     // 웨이브 시작 함수
     public void StartWave()
     {
         spawnCounter = 0;
         StartCoroutine("SpawnEvent");
+    }
+
+    // 웨이브 중단 함수
+    public void StopWave()
+    {
+        StopCoroutine("SpawnEvent");
     }
 
 
