@@ -20,6 +20,11 @@ public class BossWeapon : MonoBehaviour
 
     private AttackType curAttackType;
 
+    public AttackType CurTYPE
+    {
+        set => curAttackType = value;
+    }
+
     // 공격 시작
     public void StartFireing(AttackType attackType)
     {
@@ -35,14 +40,55 @@ public class BossWeapon : MonoBehaviour
 
     }
 
+    Vector3 targetPosition = Vector3.zero;
+
     IEnumerator AT_SingleFire()
     {
-        yield return null;
+        attackRate = 0.1f;
+
+        while (true)
+        {
+            obj = ObjectPool_Manager.Inst.pools[(int)projectileType].PopObj();
+            obj.transform.position = transform.position;
+
+            dir = targetPosition - transform.position;
+            obj.GetComponent<Movement2D>().InitMovement(dir);
+
+            yield return YieldInstructionCache.WaitForSeconds(attackRate);
+        }
+        
     }
 
     IEnumerator AT_5Shot()
     {
-        yield return null;
+        attackRate = 1f;
+        int count = 5;
+        float intervalAngle = 8f;
+        float weightAngle = 0f;
+
+        while (true)
+        {
+            weightAngle = Random.Range(-255f, 315f);
+
+           for(int i = 0; i <  3; i++)
+            {
+                for(int j = 0; j < count; j++)
+                {
+                    obj = ObjectPool_Manager.Inst.pools[(int)projectileType].PopObj();
+                    obj.transform.position = transform.position;
+
+                    angle = weightAngle + intervalAngle;
+                    dir.x = Mathf.Cos(angle * Mathf.Deg2Rad);
+                    dir.y = Mathf.Sin(angle * Mathf.Deg2Rad);
+
+                    obj.GetComponent<Movement2D>().InitMovement(dir);
+                }
+                yield return YieldInstructionCache.WaitForSeconds(0.1f);
+            }
+            yield return YieldInstructionCache.WaitForSeconds(attackRate);
+        }
+
+
     }
 
     IEnumerator AT_CircleFire()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerChar : MonoBehaviour
+public class PlayerChar : MonoBehaviour, IDamage
 {
 
     [SerializeField]
@@ -33,7 +33,21 @@ public class PlayerChar : MonoBehaviour
         isAlive = true;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamge(int damage)
+    {
+        if (isAlive)
+        {
+            CurHP = curHP - damage;
+            Debug.Log("플레이어 피격" + curHP);
+            if (curHP <= 0)
+            {
+                isAlive = false;
+                OnDie();
+            }
+        }
+    }
+
+    /*public void TakeDamage(int damage)
     {
         if (isAlive)
         {
@@ -45,7 +59,8 @@ public class PlayerChar : MonoBehaviour
                 OnDie();
             }
         }
-    }
+    }*/
+
     public void TakeHealing()
     {
         if(curHP < maxHP)

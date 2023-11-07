@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChar : ObjectPool_Label
+public class EnemyChar : ObjectPool_Label, IDamage
 {
     [SerializeField]
     private int maxHP;
@@ -45,28 +45,6 @@ public class EnemyChar : ObjectPool_Label
         
     }
 
-
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Projectile") && collision.TryGetComponent<Projectile>(out Projectile projectile) && isAlive) // 살아있을 때만 데미지 처리.
-        {
-            projectile.Push(); // 부딪힌 상대 투사체를 소멸. 
-
-            OnHit();
-            if (curHP <= 0)
-            {
-                OnDie(); // 사망 처리
-            }
-
-        }
-        else if(isAlive && collision.CompareTag("Player") && collision.TryGetComponent<PlayerChar>(out PlayerChar playerChar))
-        {
-            playerChar.TakeDamage(1);
-            OnDie();
-        }
-    }
     
     private void OnHit()
     {
@@ -139,5 +117,14 @@ public class EnemyChar : ObjectPool_Label
         }
 
 
+    }
+
+    public void TakeDamge(int damage)
+    {
+        OnHit();
+        if (curHP <= 0)
+        {
+            OnDie(); // 사망 처리
+        }
     }
 }

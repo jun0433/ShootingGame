@@ -22,7 +22,12 @@ public class BossAI : MonoBehaviour
 
     private void Awake()
     {
-        InitBossAI("Boss1", 100);
+        Invoke("GameStart", 0.1f);
+    }
+
+    private void GameStart()
+    {
+        InitBossAI("Boss1", 150);
     }
     public void InitBossAI(string name, int newHP)
     {
@@ -37,6 +42,10 @@ public class BossAI : MonoBehaviour
         if (!TryGetComponent<BossChar>(out myChar))
         {
             Debug.Log("Boss.CS - InitBossAI() - myChar 참조 실패");
+        }
+        else
+        {
+            myChar.InitBoss(name, newHP);
         }
 
         transform.position = new Vector3(0f, 7f, 0f);
@@ -73,15 +82,33 @@ public class BossAI : MonoBehaviour
         }
     }
 
+    private int randValue;
+
     IEnumerator BS_Phase01()
     {
         // 무기 활성화
-        weapon.StartFireing(AttackType.AT_CircleFire);
+        weapon.StartFireing(AttackType.AT_5Shot);
 
         // 
         while (true)
         {
-            yield return null;
+            if((float)myChar.CURHP / myChar.MAXHP <= 0.75f)
+            {
+                randValue = Random.Range(0, 100);
+                if(randValue < 50)
+                {
+                    weapon.StartFireing(AttackType.AT_5Shot);
+                }
+                else
+                {
+                    weapon.StartFireing(AttackType.AT_CircleFire);
+                }
+            }
+            else if((float)myChar.CURHP / myChar.MAXHP <= 0.5f)
+            {
+                ChangeState(BossState.BS_Phase02);
+            }
+            yield return YieldInstructionCache.WaitForSeconds(1f); // 1초에 한 번씩 HP가 75 이하로 떨어졌는지 확인
         }
     }
 
@@ -100,7 +127,21 @@ public class BossAI : MonoBehaviour
                 movement.InitMovement(moveDir);
             }
 
-            yield return YieldInstructionCache.WaitForSeconds(0.1f);
+            randValue = Random.Range(0, 100);
+            if (randValue < 33)
+            {
+                weapon.StartFireing(AttackType.AT_5Shot);
+            }
+            else if(randValue < 66)
+            {
+                weapon.StartFireing(AttackType.AT_CircleFire);
+            }
+            else
+            {
+                weapon.StartFireing(AttackType.AT_SingleFire);
+            }
+
+            yield return YieldInstructionCache.WaitForSeconds(0.5f);
         }
     }
 }

@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6020c1d0977d9046aa893b3cb474445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTag: Enemy
 --- !u!114 &3118752714843149305
 MonoBehaviour:
   m_ObjectHideFlags: 0
