@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         playerC.InitController();
         enemyS.InitSpawner();
         meteoriteM.InitMeteorite();
+
         gameScore = 0;
         countNormal = 0;
         countBoss = 0;
@@ -171,6 +172,7 @@ public class GameManager : MonoBehaviour
     public void StageClear()
     {
         curState = GameState.GS_PlayerDie;
+
         enemyS.StopWave();
         meteoriteM.StopMeteorite();
         stageClearPopup.GetComponent<StageClearManager>().SetStageClearPopup();

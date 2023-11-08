@@ -12,6 +12,7 @@ public class PlayerChar : MonoBehaviour, IDamage
     private int maxHP;
 
     private bool isAlive;
+    public bool ISALiVE => isAlive;
 
     public int CurHP
     {
@@ -38,7 +39,7 @@ public class PlayerChar : MonoBehaviour, IDamage
         if (isAlive)
         {
             CurHP = curHP - damage;
-            Debug.Log("플레이어 피격" + curHP);
+            Debug.Log("플레이어 피격" + CurHP);
             if (curHP <= 0)
             {
                 isAlive = false;

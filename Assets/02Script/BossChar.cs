@@ -33,6 +33,14 @@ public class BossChar : MonoBehaviour, IDamage
         if(!TryGetComponent<SpriteRenderer>(out sr)){
             Debug.Log("BossChar.cs - Awake() - sr 참조 실패");
         }
+        GameObject obj = GameObject.Find("EnemySpawnManager");
+        if(obj != null)
+        {
+            if(!obj.TryGetComponent<EnemySpawner>(out spawnManager))
+            {
+                Debug.Log("BossChar.cs - Awake() - spawnManager 참조 실패");
+            }
+        }
     }
 
     public void InitBoss(string name, int newHP)
@@ -67,6 +75,7 @@ public class BossChar : MonoBehaviour, IDamage
         gameObject.SetActive(false);
         transform.position = new Vector3(0f, 7f, 0f);
         // 다음 웨이브를 시작
+        spawnManager.StartWave();
     }
 
     private IEnumerator HitColor()

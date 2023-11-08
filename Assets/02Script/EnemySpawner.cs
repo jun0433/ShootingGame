@@ -19,11 +19,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject bossHPUI;
 
+    private int bossCounter;
+
     // Awake 대신 사용
     public void InitSpawner()
     {
         waveCounter = 0;
         spawnCounter = 0;
+        bossCounter = 0;
         Invoke("StartWave", 1f);
     }
 
@@ -52,11 +55,11 @@ public class EnemySpawner : MonoBehaviour
             spawnCounter++;
             for (int i = 0; i < spawnTrans.Count; i++)
             {
-                obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Enemy_01].PopObj();
+                obj = ObjectPool_Manager.Inst.pools[(int)ObjectType.ObjT_Enemy_01+waveCounter].PopObj();
                 obj.transform.position = spawnTrans[i].position;
             }
 
-            if (spawnCounter >= 10)
+            if (spawnCounter >= 3)
             {
                 Debug.Log("보스 스폰");
                 StopCoroutine("SpawnEvent");
@@ -69,11 +72,25 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnBoss()
     {
+        waveCounter++;
         bossWarningText.SetActive(true);
         yield return YieldInstructionCache.WaitForSeconds(5f);
         bossWarningText.SetActive(false);
         SoundManager.Inst.ChangeBGM(BGM_Type.BGM_Boss);
-        bossList[0].GetComponent<BossAI>().InitBossAI("Boss2", 500);
+        switch (bossCounter)
+        {
+            case 0:
+                bossList[0].GetComponent<BossAI>().InitBossAI("Boss1", 50);
+                break;
+            case 1:
+                bossList[1].GetComponent<BossAI>().InitBossAI("Boss2", 50);
+                break;
+            case 2:
+                bossList[2].GetComponent<BossAI>().InitBossAI("Boss3", 50);
+                break;
+
+        }
+        bossCounter++;
         bossHPUI.SetActive(true);
     }
 }

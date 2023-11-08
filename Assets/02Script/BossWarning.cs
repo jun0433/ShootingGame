@@ -21,6 +21,7 @@ public class BossWarning : MonoBehaviour
     {
         StartCoroutine("ColorLerpLoop");
     }
+
     // 해당 오브게트가 비활성화 되는 시점에 호출
     private void OnDisable()
     {

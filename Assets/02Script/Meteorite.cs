@@ -31,7 +31,7 @@ public class Meteorite : ObjectPool_Label
         if (collision.CompareTag("Player") && collision.TryGetComponent<PlayerChar>(out PlayerChar player))
         {
             Debug.Log("플레이어와 충돌");
-            //player.TakeDamage(1);
+            player.TakeDamge(1);
             Push();
         }
     }

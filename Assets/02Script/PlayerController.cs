@@ -29,10 +29,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 pos;
 
 
-    /*private void Awake()
+    private void Awake()
     {
-        InitController();
-    }*/
+        //InitController();
+    }
 
     public void InitController()
     {

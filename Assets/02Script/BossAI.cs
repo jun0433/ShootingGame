@@ -20,15 +20,6 @@ public class BossAI : MonoBehaviour
     private BossChar myChar;
 
 
-    private void Awake()
-    {
-        Invoke("GameStart", 0.1f);
-    }
-
-    private void GameStart()
-    {
-        InitBossAI("Boss1", 150);
-    }
     public void InitBossAI(string name, int newHP)
     {
         if(!TryGetComponent<Movement2D>(out movement))

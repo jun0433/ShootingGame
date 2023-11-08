@@ -68,7 +68,7 @@ public class BossWeapon : MonoBehaviour
 
         while (true)
         {
-            weightAngle = Random.Range(-255f, 315f);
+            weightAngle = Random.Range(225f, 315f);
 
            for(int i = 0; i <  3; i++)
             {
@@ -77,7 +77,7 @@ public class BossWeapon : MonoBehaviour
                     obj = ObjectPool_Manager.Inst.pools[(int)projectileType].PopObj();
                     obj.transform.position = transform.position;
 
-                    angle = weightAngle + intervalAngle;
+                    angle = weightAngle + j;
                     dir.x = Mathf.Cos(angle * Mathf.Deg2Rad);
                     dir.y = Mathf.Sin(angle * Mathf.Deg2Rad);
 
@@ -93,7 +93,7 @@ public class BossWeapon : MonoBehaviour
 
     IEnumerator AT_CircleFire()
     {
-        attackRate = 0.7f;
+        attackRate = 0.2f;
         int count = 30;
         float intervalAngle = 360f/count;
         float weightAngle = 0f;
