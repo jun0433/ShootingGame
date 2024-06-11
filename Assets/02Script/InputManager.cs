@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
         playerCont = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
+    // 마우스의 움직임을 처리하는 함수
     private void OnMouseDown()
     {
         if(GameManager.Inst.CurState == GameState.GS_Play && playerCont != null)

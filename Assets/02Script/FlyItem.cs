@@ -69,6 +69,10 @@ public class FlyItem : ObjectPool_Label
             switch (type)
             {
                 case Item_Type.IT_Power:
+                    if(collision.TryGetComponent<Weapon>(out Weapon damage))
+                    {
+                        damage.PLAYERDAMAGE++;
+                    }
                     break;
                 case Item_Type.IT_Heart:
                     if(collision.TryGetComponent<PlayerChar>(out PlayerChar player))

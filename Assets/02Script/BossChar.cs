@@ -55,7 +55,7 @@ public class BossChar : MonoBehaviour, IDamage
     {
         if (isAlive)
         {
-            curHP -= 1;
+            curHP = curHP - Weapon.Inst.PLAYERDAMAGE;
             StopCoroutine("HitColor");
             StartCoroutine("HitColor");
 

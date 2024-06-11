@@ -48,7 +48,7 @@ public class EnemyChar : ObjectPool_Label, IDamage
     
     private void OnHit()
     {
-        curHP--;
+        curHP = curHP - Weapon.Inst.PLAYERDAMAGE;
         StartCoroutine("HitColor");
     }
 

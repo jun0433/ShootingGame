@@ -23,5 +23,8 @@ public class Projectile : ObjectPool_Label
                 damage.TakeDamge(1);
             }
         }
+
     }
+
+
 }

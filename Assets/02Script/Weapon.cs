@@ -11,7 +11,7 @@ public enum FireType
     FT_UpgradeDouble,
 }
 
-public class Weapon : MonoBehaviour
+public class Weapon : Singleton<Weapon>
 {
     private bool isInit = false;        // 무기 사용하기 위한 세팅
     private GameObject projectilePrefab;  // 프리펩을 선택할 프로젝타일
@@ -128,6 +128,14 @@ public class Weapon : MonoBehaviour
 
             yield return new WaitForSeconds(attackRate); // 공격 딜레이. 
         }
+    }
+
+    // 플레이어 데미지
+    private int playerDamage = 1;
+    public int PLAYERDAMAGE
+    {
+        get => playerDamage;
+        set => playerDamage = value;
     }
 
 

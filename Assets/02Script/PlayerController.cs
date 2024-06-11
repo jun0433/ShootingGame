@@ -21,7 +21,14 @@ public class PlayerController : MonoBehaviour
         set
         {
             isMove = value;
-            weapon.FIRING = value;  // 무기 작동상태 변경. 
+            if(weapon != null)
+            {
+                weapon.FIRING = value;  // 무기 작동상태 변경. 
+            }
+            else
+            {
+                Debug.Log("PlayerController.cs - MOVEINPUT - weapon 객체 참조 실패");
+            }
 
         }
     }
@@ -31,9 +38,11 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        //InitController();
+        
     }
 
+
+    // Controller를 초기화하는 함수
     public void InitController()
     {
         isMove = false;

@@ -59,7 +59,8 @@ public class EnemySpawner : MonoBehaviour
                 obj.transform.position = spawnTrans[i].position;
             }
 
-            if (spawnCounter >= 3)
+            // 보스 전까지 웨이브 지정
+            if (spawnCounter >= 15)
             {
                 Debug.Log("보스 스폰");
                 StopCoroutine("SpawnEvent");
@@ -83,10 +84,10 @@ public class EnemySpawner : MonoBehaviour
                 bossList[0].GetComponent<BossAI>().InitBossAI("Boss1", 50);
                 break;
             case 1:
-                bossList[1].GetComponent<BossAI>().InitBossAI("Boss2", 50);
+                bossList[1].GetComponent<BossAI>().InitBossAI("Boss2", 100);
                 break;
             case 2:
-                bossList[2].GetComponent<BossAI>().InitBossAI("Boss3", 50);
+                bossList[2].GetComponent<BossAI>().InitBossAI("Boss3", 150);
                 break;
 
         }

@@ -48,20 +48,6 @@ public class PlayerChar : MonoBehaviour, IDamage
         }
     }
 
-    /*public void TakeDamage(int damage)
-    {
-        if (isAlive)
-        {
-            CurHP = curHP - damage;
-            Debug.Log("플레이어 피격" + curHP);
-            if(curHP <= 0)
-            {
-                isAlive = false;
-                OnDie();
-            }
-        }
-    }*/
-
     public void TakeHealing()
     {
         if(curHP < maxHP)
