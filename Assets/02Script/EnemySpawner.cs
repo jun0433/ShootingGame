@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Singleton<EnemySpawner>
 {
     [SerializeField]
     private List<Transform> spawnTrans;
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject bossWarningText;
     [SerializeField]
-    private GameObject bossHPUI;
+    public GameObject bossHPUI;
 
     private int bossCounter;
 
@@ -60,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             // 보스 전까지 웨이브 지정
-            if (spawnCounter >= 15)
+            if (spawnCounter >= 1)
             {
                 Debug.Log("보스 스폰");
                 StopCoroutine("SpawnEvent");
@@ -69,6 +69,11 @@ public class EnemySpawner : MonoBehaviour
 
             yield return YieldInstructionCache.WaitForSeconds(spawnDeltaTime);  // 스폰과 스폰 사이의 딜레이 부여. 
         }
+    }
+
+    private void GameClear()
+    {
+        GameManager.Inst.StageClear();
     }
 
     private IEnumerator SpawnBoss()
@@ -94,4 +99,5 @@ public class EnemySpawner : MonoBehaviour
         bossCounter++;
         bossHPUI.SetActive(true);
     }
+
 }

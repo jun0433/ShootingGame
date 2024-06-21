@@ -74,6 +74,7 @@ public class BossChar : MonoBehaviour, IDamage
         isAlive = false;
         gameObject.SetActive(false);
         transform.position = new Vector3(0f, 7f, 0f);
+        EnemySpawner.Inst.bossHPUI.SetActive(false);
         // 다음 웨이브를 시작
         spawnManager.StartWave();
     }

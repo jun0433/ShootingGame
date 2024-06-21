@@ -23,6 +23,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField]
     private Image expBar;
 
+    private int energy;
+
 
     private void Awake()
     {

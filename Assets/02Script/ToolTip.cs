@@ -13,6 +13,8 @@ public class ToolTip : MonoBehaviour
     private TextMeshProUGUI balanceText;
     [SerializeField]
     private TextMeshProUGUI priceText;
+    [SerializeField]
+    private TextMeshProUGUI energyText;
 
 
     [SerializeField]

@@ -20,11 +20,12 @@ public class MagnetField : MonoBehaviour
     }
 
 
+
+    // 아이템과 부딪히면 아이템을 획득하는 함수
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Item") && collision.TryGetComponent<DropItem>(out DropItem item))
         {
-            Debug.Log("DropItem 습득 프로세스 시작");
             item.SetTarget(transform.parent.gameObject);
         }
     }
