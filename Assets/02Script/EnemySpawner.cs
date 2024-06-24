@@ -76,6 +76,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
         GameManager.Inst.StageClear();
     }
 
+
+    // 보스를 스폰하는 함수(보스 체력 및 보스 설정)
     private IEnumerator SpawnBoss()
     {
         waveCounter++;
@@ -86,13 +88,13 @@ public class EnemySpawner : Singleton<EnemySpawner>
         switch (bossCounter)
         {
             case 0:
-                bossList[0].GetComponent<BossAI>().InitBossAI("Boss1", 50);
+                bossList[0].GetComponent<BossAI>().InitBossAI("Boss1", 200);
                 break;
             case 1:
-                bossList[1].GetComponent<BossAI>().InitBossAI("Boss2", 100);
+                bossList[1].GetComponent<BossAI>().InitBossAI("Boss2", 400);
                 break;
             case 2:
-                bossList[2].GetComponent<BossAI>().InitBossAI("Boss3", 150);
+                bossList[2].GetComponent<BossAI>().InitBossAI("Boss3", 600);
                 break;
 
         }

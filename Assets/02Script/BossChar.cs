@@ -18,10 +18,13 @@ public class BossChar : MonoBehaviour, IDamage
     {
         get => curHP;
     }
+
     [SerializeField]
     private Image imgFill;
+
     [SerializeField]
     private TextMeshProUGUI textName;
+
     [SerializeField]
     private EnemySpawner spawnManager;
 
@@ -51,6 +54,7 @@ public class BossChar : MonoBehaviour, IDamage
         textName.text = name;
     }
 
+    // Boss가 데미지를 입는 함수
     public void TakeDamge(int damage)
     {
         if (isAlive)
@@ -69,6 +73,8 @@ public class BossChar : MonoBehaviour, IDamage
 
     }
 
+
+    // 보스가 죽었을 때 작동하는 함수
     private void OnDie()
     {
         isAlive = false;

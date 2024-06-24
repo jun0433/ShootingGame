@@ -78,12 +78,12 @@ public class BossAI : MonoBehaviour
     IEnumerator BS_Phase01()
     {
         // 무기 활성화
-        weapon.StartFireing(AttackType.AT_5Shot);
+        //weapon.StartFireing(AttackType.AT_5Shot);
 
         // HP의 퍼센트가 기준치 이하로 떨어질 경우 2페이즈로 변경
         while (true)
         {
-            if((float)myChar.CURHP / (float)myChar.MAXHP >= 0.6f)
+            if((float)myChar.CURHP / (float)myChar.MAXHP > 0.5f)
             {
                 randValue = Random.Range(0, 100);
                 if(randValue < 50)
@@ -100,7 +100,7 @@ public class BossAI : MonoBehaviour
                 Debug.Log("2페이즈 테스트");
                 ChangeState(BossState.BS_Phase02);
             }
-            yield return YieldInstructionCache.WaitForSeconds(1f); // 1초에 한 번씩 HP가 기준 이하로 떨어졌는지 확인
+            yield return YieldInstructionCache.WaitForSeconds(1f); // 1초에 한 번씩 HP가 기준 이하로 떨어졌는지 확인(공격패턴 변경)
         }
     }
 
@@ -133,7 +133,7 @@ public class BossAI : MonoBehaviour
                 weapon.StartFireing(AttackType.AT_SingleFire);
             }
 
-            yield return YieldInstructionCache.WaitForSeconds(0.5f);
+            yield return YieldInstructionCache.WaitForSeconds(2f);
         }
     }
 }
