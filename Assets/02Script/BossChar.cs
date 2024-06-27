@@ -78,8 +78,8 @@ public class BossChar : MonoBehaviour, IDamage
     private void OnDie()
     {
         isAlive = false;
-        gameObject.SetActive(false);
-        transform.position = new Vector3(0f, 7f, 0f);
+        //gameObject.SetActive(false);
+        transform.position = new Vector3(-8f, -2f, 0f);
         EnemySpawner.Inst.bossHPUI.SetActive(false);
         // 다음 웨이브를 시작
         spawnManager.StartWave();

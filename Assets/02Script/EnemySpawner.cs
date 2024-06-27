@@ -85,16 +85,17 @@ public class EnemySpawner : Singleton<EnemySpawner>
         yield return YieldInstructionCache.WaitForSeconds(5f);
         bossWarningText.SetActive(false);
         SoundManager.Inst.ChangeBGM(BGM_Type.BGM_Boss);
-        switch (bossCounter)
+        // 보스를 순서대로 스폰(체력은 스폰 시 마다 증가)
+        switch (bossCounter%3)
         {
             case 0:
-                bossList[0].GetComponent<BossAI>().InitBossAI("Boss1", 200);
+                bossList[0].GetComponent<BossAI>().InitBossAI("Boss1", 10 * (bossCounter + 1));
                 break;
             case 1:
-                bossList[1].GetComponent<BossAI>().InitBossAI("Boss2", 400);
+                bossList[1].GetComponent<BossAI>().InitBossAI("Boss2", 10 * (bossCounter + 1));
                 break;
             case 2:
-                bossList[2].GetComponent<BossAI>().InitBossAI("Boss3", 600);
+                bossList[2].GetComponent<BossAI>().InitBossAI("Boss3", 10 * (bossCounter + 1));
                 break;
 
         }
