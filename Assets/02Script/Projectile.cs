@@ -11,12 +11,18 @@ interface IDamage
 
 public class Projectile : ObjectPool_Label
 {
+
+    // Projectile에 상호작용 할 Tag를 설정
     [SerializeField]
     private string targetTag;
 
+    [SerializeField]
+    private string targetTag2;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(targetTag))
+        // 정해진 Tag에 상호작용 되게 설정
+        if (collision.CompareTag(targetTag)||collision.CompareTag(targetTag2))
         {
             if(collision.TryGetComponent<IDamage>(out IDamage damage))
             {

@@ -8,6 +8,7 @@ public enum BossState
     BS_MoveToAppear = 0, // 스폰 후, 전투 위치로 이동
     BS_Phase01,          // 제자리에서반복적인 프로젝타일 발사
     BS_Phase02,          // 좌우로 반복 이동하면서 공격
+    BS_Stop,             // 보스 사망시 제자리
 }
 
 public class BossAI : MonoBehaviour
@@ -39,6 +40,7 @@ public class BossAI : MonoBehaviour
             myChar.InitBoss(name, newHP);
         }
 
+        // 보스를 스폰 위치로 변경
         transform.position = new Vector3(0f, 7f, 0f);
         gameObject.SetActive(true);
 
@@ -97,10 +99,9 @@ public class BossAI : MonoBehaviour
             }
             else if((float)myChar.CURHP / myChar.MAXHP <= 0.5f)
             {
-                Debug.Log("2페이즈 테스트");
                 ChangeState(BossState.BS_Phase02);
             }
-            yield return YieldInstructionCache.WaitForSeconds(1f); // 1초에 한 번씩 HP가 기준 이하로 떨어졌는지 확인(공격패턴 변경)
+            yield return YieldInstructionCache.WaitForSeconds(2f); // N초에 한 번씩 HP가 기준 이하로 떨어졌는지 확인(공격패턴 변경)
         }
     }
 
@@ -135,5 +136,14 @@ public class BossAI : MonoBehaviour
 
             yield return YieldInstructionCache.WaitForSeconds(2f);
         }
+    }
+
+    IEnumerator BS_Stop()
+    {
+        movement.InitMovement(Vector3.zero);
+        StopCoroutine("BS_Phase01");
+        StopCoroutine("BS_Phase02");
+
+        yield return YieldInstructionCache.WaitForSeconds(0.2f);
     }
 }

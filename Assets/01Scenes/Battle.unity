@@ -2952,7 +2952,7 @@ GameObject:
   - component: {fileID: 567130653}
   m_Layer: 8
   m_Name: Stage02Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5052,7 +5052,7 @@ GameObject:
   - component: {fileID: 1208344945}
   m_Layer: 8
   m_Name: Stage01Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5756,7 +5756,7 @@ GameObject:
   - component: {fileID: 1401552719}
   m_Layer: 8
   m_Name: Stage03Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

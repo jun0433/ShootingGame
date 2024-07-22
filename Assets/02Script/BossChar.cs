@@ -28,6 +28,8 @@ public class BossChar : MonoBehaviour, IDamage
     [SerializeField]
     private EnemySpawner spawnManager;
 
+    private BossAI bossAI;
+
     private bool isAlive;
     private SpriteRenderer sr;
 
@@ -44,6 +46,12 @@ public class BossChar : MonoBehaviour, IDamage
                 Debug.Log("BossChar.cs - Awake() - spawnManager 참조 실패");
             }
         }
+
+        if (!TryGetComponent<BossAI>(out bossAI))
+        {
+            Debug.Log("BossChar.cs - Awake() - bossAI 참조실패");
+        }
+
     }
 
     public void InitBoss(string name, int newHP)
@@ -81,6 +89,8 @@ public class BossChar : MonoBehaviour, IDamage
         //gameObject.SetActive(false);
         transform.position = new Vector3(-8f, -2f, 0f);
         EnemySpawner.Inst.bossHPUI.SetActive(false);
+        bossAI.ChangeState(BossState.BS_Stop);
+
         // 다음 웨이브를 시작
         spawnManager.StartWave();
     }

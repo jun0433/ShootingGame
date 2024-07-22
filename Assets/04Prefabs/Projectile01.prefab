@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Enemy
+  targetTag2: Boss
 --- !u!114 &3118752714843149305
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class EnemyChar : ObjectPool_Label, IDamage
         
     }
 
-    
+    // Enemy 타격시 호출 함수
     private void OnHit()
     {
         curHP = curHP - Weapon.Inst.PLAYERDAMAGE;
@@ -84,6 +84,7 @@ public class EnemyChar : ObjectPool_Label, IDamage
 
     private int randCount;
 
+    // Enemy 사망시 아이템 드랍 함수
     private void DropItem()
     {
         randCount = Random.Range(0, 100);
@@ -118,6 +119,7 @@ public class EnemyChar : ObjectPool_Label, IDamage
 
 
     }
+
 
     public void TakeDamge(int damage)
     {

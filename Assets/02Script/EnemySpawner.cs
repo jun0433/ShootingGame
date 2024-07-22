@@ -81,10 +81,15 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private IEnumerator SpawnBoss()
     {
         waveCounter++;
+
+        // 보스 출현 문구 표시
         bossWarningText.SetActive(true);
         yield return YieldInstructionCache.WaitForSeconds(5f);
         bossWarningText.SetActive(false);
+
+        // 배경음을 보스 배경음으로 변경
         SoundManager.Inst.ChangeBGM(BGM_Type.BGM_Boss);
+        
         // 보스를 순서대로 스폰(체력은 스폰 시 마다 증가)
         switch (bossCounter%3)
         {
