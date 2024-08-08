@@ -55,7 +55,7 @@ public class DropItem : ObjectPool_Label
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Inst.AddScore(7); // 보석 획득시 스코어 증가
+            GameManager.Inst.AddScore(1); // 보석 획득시 스코어 증가
             Push();
         }
     }

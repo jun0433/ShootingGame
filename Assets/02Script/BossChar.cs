@@ -88,6 +88,8 @@ public class BossChar : MonoBehaviour, IDamage
         isAlive = false;
         //gameObject.SetActive(false);
         transform.position = new Vector3(-8f, -2f, 0f);
+        GameManager.Inst.AddKillCount(true);
+        GameManager.Inst.AddScore(50);
         EnemySpawner.Inst.bossHPUI.SetActive(false);
         bossAI.ChangeState(BossState.BS_Stop);
 

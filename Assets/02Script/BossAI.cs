@@ -101,7 +101,7 @@ public class BossAI : MonoBehaviour
             {
                 ChangeState(BossState.BS_Phase02);
             }
-            yield return YieldInstructionCache.WaitForSeconds(2f); // N초에 한 번씩 HP가 기준 이하로 떨어졌는지 확인(공격패턴 변경)
+            yield return YieldInstructionCache.WaitForSeconds(3f); // N초에 한 번씩 HP가 기준 이하로 떨어졌는지 확인(공격패턴 변경)
         }
     }
 
@@ -134,15 +134,14 @@ public class BossAI : MonoBehaviour
                 weapon.StartFireing(AttackType.AT_SingleFire);
             }
 
-            yield return YieldInstructionCache.WaitForSeconds(2f);
+            yield return YieldInstructionCache.WaitForSeconds(3f);
         }
     }
 
     IEnumerator BS_Stop()
     {
         movement.InitMovement(Vector3.zero);
-        StopCoroutine("BS_Phase01");
-        StopCoroutine("BS_Phase02");
+        weapon.StopFireing();
 
         yield return YieldInstructionCache.WaitForSeconds(0.2f);
     }

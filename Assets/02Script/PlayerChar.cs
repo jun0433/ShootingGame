@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,5 +61,13 @@ public class PlayerChar : MonoBehaviour, IDamage
     {
         GameManager.Inst.StageClear();
         Debug.Log("플레이어 사망");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            TakeDamge(1);
+        }
     }
 }

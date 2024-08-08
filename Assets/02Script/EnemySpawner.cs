@@ -60,7 +60,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
             }
 
             // 보스 전까지 웨이브 지정
-            if (spawnCounter >= 1)
+            if (spawnCounter >= 10)
             {
                 Debug.Log("보스 스폰");
                 StopCoroutine("SpawnEvent");
@@ -94,13 +94,13 @@ public class EnemySpawner : Singleton<EnemySpawner>
         switch (bossCounter%3)
         {
             case 0:
-                bossList[0].GetComponent<BossAI>().InitBossAI("Boss1", 10 * (bossCounter + 1));
+                bossList[0].GetComponent<BossAI>().InitBossAI("Boss" + (bossCounter + 1), 10 * (bossCounter + 1));
                 break;
             case 1:
-                bossList[1].GetComponent<BossAI>().InitBossAI("Boss2", 10 * (bossCounter + 1));
+                bossList[1].GetComponent<BossAI>().InitBossAI("Boss" + (bossCounter + 1), 10 * (bossCounter + 1));
                 break;
             case 2:
-                bossList[2].GetComponent<BossAI>().InitBossAI("Boss3", 10 * (bossCounter + 1));
+                bossList[2].GetComponent<BossAI>().InitBossAI("Boss" + (bossCounter + 1), 10 * (bossCounter + 1));
                 break;
 
         }
