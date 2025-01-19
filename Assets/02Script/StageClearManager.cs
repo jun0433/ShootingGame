@@ -14,13 +14,14 @@ public class StageClearManager : MonoBehaviour
         // 페이드 효과 적용
 
         // 씬 변경
-        Invoke("LoadScene", 3f);
+        LoadScene();
     }
 
-    private void LoadScene()
+    public void LoadScene()
     {
         GameManager.Inst.StageResult(); // 골드를 증가시키는 함수
-        SceneManager.LoadScene("Lobby"); // "Lobby"씬 로드
+        PlayerPrefs.SetString(Save_Type.st_SceneName.ToString(), Scene.Lobby.ToString()); // 다음씬 이름 저장(로딩을 하기 위해서)
+        SceneManager.LoadScene(Scene.Loading.ToString());
     }
 
     [SerializeField]

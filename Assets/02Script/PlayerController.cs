@@ -25,10 +25,6 @@ public class PlayerController : MonoBehaviour
             {
                 weapon.FIRING = value;  // 무기 작동상태 변경. 
             }
-            else
-            {
-                Debug.Log("PlayerController.cs - MOVEINPUT - weapon 객체 참조 실패");
-            }
 
         }
     }

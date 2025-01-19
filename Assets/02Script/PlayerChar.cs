@@ -40,7 +40,7 @@ public class PlayerChar : MonoBehaviour, IDamage
         if (isAlive)
         {
             CurHP = curHP - damage;
-            Debug.Log("플레이어 피격" + CurHP);
+            // Debug.Log("플레이어 피격" + CurHP);
             if (curHP <= 0)
             {
                 isAlive = false;
@@ -60,7 +60,7 @@ public class PlayerChar : MonoBehaviour, IDamage
     private void OnDie()
     {
         GameManager.Inst.StageClear();
-        Debug.Log("플레이어 사망");
+        // Debug.Log("플레이어 사망");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

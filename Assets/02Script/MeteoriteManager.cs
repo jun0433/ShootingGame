@@ -22,6 +22,10 @@ public class MeteoriteManager : MonoBehaviour
         StopCoroutine("SpawnAlertLine");
     }
 
+    /// <summary>
+    /// Meteorite가 떨어지기 전에 떨어질 위치를 경고하는 코루틴
+    /// </summary>
+    /// <returns></returns>
     IEnumerator SpawnAlertLine()
     {
         while (true)

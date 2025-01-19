@@ -107,7 +107,7 @@ public class LobbyManager : MonoBehaviour
 
     public void OnClick_GameStart()
     {
-        PlayerPrefs.SetString(Save_Type.st_SceneName.ToString(), Scene.Battle.ToString()); // 다음씬 이름 저장
+        PlayerPrefs.SetString(Save_Type.st_SceneName.ToString(), Scene.Battle.ToString()); // 다음씬 이름 저장(로딩을 하기 위해서)
         SceneManager.LoadScene(Scene.Loading.ToString());
     }
 

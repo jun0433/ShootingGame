@@ -53,6 +53,9 @@ public class PlayerBoom : ObjectPool_Label
 
     }
 
+    /// <summary>
+    /// 소환된 Enemy를 제거할 수 있는 폭탄을 사용하는 함수
+    /// </summary>
     public void Explosion()
     {
         Debug.Log("주변 몬스터 처치");

@@ -93,9 +93,9 @@ public class GameManager : MonoBehaviour
         Invoke("InitGame", 2f);
     }
 
-    private void InitGame()
+    public void InitGame()
     {
-
+        Debug.Log("게임 초기화");
         playerC.InitController();
         enemyS.InitSpawner();
         meteoriteM.InitMeteorite();
